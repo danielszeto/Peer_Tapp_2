@@ -26,7 +26,22 @@
      <ul ng-repeat="beer in all.beers">
         <div>{{beer.name}} </div>
         <div class="beerKind"> {{beer.kind}} </div>
+        <div class="beerKind"> {{beer.style}} </div>
         <img src="{{beer.image}}"> <br/><br/>
         <button class="btn btn-default" class='delete' ng-click="all.deleteBeer(beer)">Delete</button>
         <button ng-click="all.displayEditForm=true" class="btn btn-default">Edit</button>
-    </ul>
+
+      <form ng-show="all.displayEditForm" ng-submit="all.updateBeer(beer)">
+        <div class="form-group">
+            <input type="text" ng-model="beer.name" class="form-control" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <input type="text" ng-model="beer.kind" class="form-control" placeholder="Kind">
+        </div>
+        <div class="form-group">
+            <input type="text" ng-model="beer.style" class="form-control" placeholder="Style">
+        </div>
+          <input type="submit" value="Save beer" class="btn btn-default">
+                <!-- ng-click="home.displayEditForm=false" -->
+      </form>
+</ul>

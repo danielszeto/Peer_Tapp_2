@@ -21,9 +21,9 @@ router.route('/api/beers')
   .post(auth.ensureAuthenticated, beersController.newBeer);
 
 router.route('/api/beers/:id')
-  .get(beersController.showBeer)
-  .put(beersController.editBeer)
-  .delete(beersController.deleteBeer);
+  .get(auth.ensureAuthenticated, beersController.showBeer)
+  .put(auth.ensureAuthenticated, beersController.updateBeer)
+  .delete(auth.ensureAuthenticated, beersController.deleteBeer);
 
 
 module.exports = router;

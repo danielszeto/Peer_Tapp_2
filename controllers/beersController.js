@@ -32,20 +32,22 @@ var beersController = {
 
 
 
-  editBeer: function (req, res) {
-    // get beer id from url params (`req.params`)
-    var beerId = req.params.id;
-    console.log('hit get route');
-    // find beer in db by id
-    Beer.findOne({ _id: beerId }, function (err, foundBeer) {
-      if (err) {
-        console.log(err);
-        res.status(500).json({ error: err.message });
-      } else {
-        res.json(foundBeer);
-      }
+  updateBeer: function (req, res) {
+    var id = req.params.id;
+    console.log('hit update route');
+    console.log(req.body);
+    Beer.findById({_id: id}, function (err, foundBeer){
+        if (err) console.log(err);
+        foundBeer.name = req.body.name;
+        foundBeer.kind= req.body.kind;
+        foundBeer.style = req.body.style;
+        foundBeer.save(function (err, saved){
+            if (err) { console.log(err);}
+            res.json(saved);
+        });
     });
   },
+
   deleteBeer: function (req, res) {
     var id = req.params.id;
     Beer.remove({_id:id}, function (err, data) {
