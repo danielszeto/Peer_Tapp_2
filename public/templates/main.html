@@ -1,1 +1,32 @@
-main.html
+<h1>All the Beers</h1>
+
+     <form class="add-beer" ng-submit='home.createBeer()'>
+      <div>
+        <label for="beer-name">Name:</label>
+        <input type="text" id="beer-brand" ng-model="home.newBeer.brand" placeholder="brand">
+      </div>
+      <div>
+        <label for="newShoe-kind">Kind:</label>
+        <input type="text" id="newBeer-kind" ng-model="home.newBeer.kind" placeholder="Ale?">
+      </div>
+      <div>
+        <label for="newShoe-style">Style:</label>
+        <input type="text" id="newBeer-style" ng-model="home.newBeer.style" placeholder="IPA?">
+      <div>
+      <div>
+        <label for="newShoe-image">Image:</label>
+        <input type="text" id="newBeer-image" ng-model="home.newBeer.image" placeholder="image URL">
+      <div>
+        <input type="submit" value="Add Beer">
+      </div>
+    </form>
+
+
+<ul class="beerShow">
+     <ul ng-repeat="beer in all.beers">
+        <div>{{beer.name}} </div>
+        <div class="beerKind"> {{beer.kind}} </div>
+        <img src="{{beer.image}}"> <br/><br/>
+        <button class="btn btn-default" class='delete' ng-click="main.deleteShoe(shoe)">Delete</button>
+        <button ng-click="home.displayEditForm=true" class="btn btn-default">Edit</button>
+    </ul>
