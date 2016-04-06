@@ -1,15 +1,16 @@
 //SERVER SIDE JAVASCRIPT
 var express       = require('express'),
-  app             = express(),
-  mongoose        = require('mongoose'),
-  bodyParser      = require('body-parser'),
-  methodOverride  = require('method-override'),
-  auth            = require('./resources/auth'),
-  hbs             = require('hbs'),
-  path            = require('path'),
-  logger          = require('morgan'),
-  routes          = require('./config/routes'),
-  User            = require('./models/user');
+    app             = express(),
+    mongoose        = require('mongoose'),
+    bodyParser      = require('body-parser'),
+    methodOverride  = require('method-override'),
+    auth            = require('./resources/auth'),
+    hbs             = require('hbs'),
+    path            = require('path'),
+    logger          = require('morgan'),
+    routes          = require('./config/routes'),
+    User            = require('./models/user'),
+    Beer = require('./models/beer');
 
 // require and load dotenv
 require('dotenv').load();
@@ -61,9 +62,9 @@ app.delete('/api/me', function(req,res) {
       console.log("ERROR".bgRed, err); 
     }
       console.log("removing:", user); 
-  })
+  });
 
-})
+});
 
 /*
  * Auth Routes

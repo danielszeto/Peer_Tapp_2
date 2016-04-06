@@ -102,16 +102,45 @@ function configRoutes($stateProvider, $urlRouterProvider, $locationProvider) {
 /////////////////
 // AllController.$inject = ["Account"]; // minification protection
 function AllController (Beer, $scope) {
-  this.newBeer = {};
-    this.beers = Beer.query();
-    console.log(this.beers);
-    // this.createShoe = createShoe;
-    // this.updateShoe = updateShoe;
-    // this.deleteShoe = deleteShoe;
-    // this.incrementUpvotes = incrementUpvotes;
+    var vm = this;
+    vm.newBeer = {};
+    vm.beers = Beer.query();
+    vm.createBeer = createBeer;
+    vm.updateBeer = updateBeer;
+    vm.deleteBeer = deleteBeer;
+    // vm.incrementUpvotes = incrementUpvotes;
     // this.newComment ={};
     // this.comments = Comment.query();
     // this.createComment = createComment;
+  function updateBeer(beer) {
+    console.log('updating3');
+      Beer.update({id: beer._id}, beer);
+      vm.displayEditForm = false;
+    }
+
+  function incrementUpvotes(beer){
+      console.log('incrementing');
+      beer.upvotes += 1;
+      Beer.update({id: beer._id}, beer);
+      // console.log(beer.upvotes);
+    }
+
+  function createBeer(){
+    console.log('incrementing2');
+    console.log(vm.newBeer);
+        Beer.save(vm.newBeer);
+        vm.beers.push(vm.newBeer);
+        vm.newBeer = {};
+        console.log(vm.newBeer);
+        console.log('saved');
+   }
+
+  function deleteBeer(beer) {
+      console.log("deleting", beer._id);
+      Beer.remove({id:beer._id});
+      var beersIndex = vm.beers.indexOf(beer);
+      vm.beers.splice(beersIndex, 1);
+    }
 }
 
 app.service('Beer', function($resource) {

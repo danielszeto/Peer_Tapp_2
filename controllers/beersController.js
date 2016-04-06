@@ -4,9 +4,11 @@ var beersController = {
   beersIndex: function (req, res) {
     Beer.find({}, function (err, allBeers){
       err ? console.log(err) : res.json(allBeers);
+      console.log('BeerIndex is getting hit');
     });
   },
   showBeer: function(req,res) {
+    console.log('showBeer is getting hit');
     var id = req.params.id;
     Beer.findById({_id: id}, function(err, data) {
       err ? console.log(err) : res.json(data);
@@ -14,15 +16,22 @@ var beersController = {
   },
 
   newBeer: function (req, res) {
-    var newBeer = new Beer(req.body);
-    newBeer.save(function (err, savedBeer) {
-      if (err) {
-        res.status(500).json({ error: err.message });
-      } else {
-        res.json(savedBeer);
-      }
+    console.log('new beer route is hittin');
+    var name = req.body.name;
+    var kind = req.body.kind;
+    var style = req.body.style;
+    var image = req.body.image;
+    var userid = req.user;
+
+    Beer.create({name: name, kind: kind, style: style, image: image, userid: userid}, 
+    function(err, newBeer) { 
+      console.log(newBeer);
+      err ? console.log(err) : res.json(newBeer);
     });
   },
+
+
+
   editBeer: function (req, res) {
     // get beer id from url params (`req.params`)
     var beerId = req.params.id;
@@ -37,7 +46,7 @@ var beersController = {
       }
     });
   },
-  deleteGarden: function (req, res) {
+  deleteBeer: function (req, res) {
     var id = req.params.id;
     Beer.remove({_id:id}, function (err, data) {
      if (err) {
@@ -49,4 +58,4 @@ var beersController = {
   },
 };
 
-module.exports = beersController
+module.exports = beersController;

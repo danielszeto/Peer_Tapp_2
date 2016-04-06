@@ -1,9 +1,10 @@
 //api goes here
 var express = require('express'),
-    app = express(),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
+    methodOverride = require('method-override'),
     router = express.Router(),
+    auth            = require('../resources/auth'),
     usersController = require('../controllers/usersController'),
     beersController = require('../controllers/beersController');
 
@@ -17,12 +18,12 @@ router.route('/api/users')
 //  beer crud api
 router.route('/api/beers')
   .get(beersController.beersIndex)
-  .post(beersController.newBeer);
+  .post(auth.ensureAuthenticated, beersController.newBeer);
 
 router.route('/api/beers/:id')
   .get(beersController.showBeer)
-  .put(beersController.editBeer);//update 
-  // .delete(beersController.deleteBeer);
+  .put(beersController.editBeer)
+  .delete(beersController.deleteBeer);
 
 
 module.exports = router;
