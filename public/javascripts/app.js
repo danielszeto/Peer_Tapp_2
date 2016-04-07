@@ -101,13 +101,14 @@ function configRoutes($stateProvider, $urlRouterProvider, $locationProvider) {
 // CONTROLLERS //
 /////////////////
 // AllController.$inject = ["Account"]; // minification protection
-function AllController (Beer, $scope) {
+function AllController (Beer, $scope, $rootScope) {
     var vm = this;
     vm.newBeer = {};
     vm.beers = Beer.query();
     vm.createBeer = createBeer;
     vm.updateBeer = updateBeer;
     vm.deleteBeer = deleteBeer;
+
     // vm.incrementUpvotes = incrementUpvotes;
     // this.newComment ={};
     // this.comments = Comment.query();
@@ -242,8 +243,8 @@ function ProfileController (Account) {
 //////////////
 // Services //
 //////////////
-Account.$inject = ["$http", "$q", "$auth"]; // minification protection
-function Account($http, $q, $auth) {
+Account.$inject = ["$http", "$q", "$auth", "$rootScope"]; // minification protection
+function Account($http, $q, $auth, $rootScope) {
   var self = this;
   self.user = null;
   self.signup = signup;
@@ -254,7 +255,7 @@ function Account($http, $q, $auth) {
   self.updateProfile = updateProfile;
 
  function signup(userData) {
- 	console.log("hitting signup")
+  console.log("hitting signup")
     // returns a promise
     return (
       $auth
@@ -320,7 +321,23 @@ function Account($http, $q, $auth) {
   }
   function getProfile() {
     return $http.get('/api/me');
+
   }
+
+  $http({
+  method: 'GET',
+  url: '/api/me'
+    }).then(function successCallback(res) {
+    $rootScope.currentUser = res.data._id;
+
+    console.log('this is res', res);
+    console.log('this is rootscope', $rootScope);
+    console.log('this is the user id', res.data._id);
+    // this callback will be called asynchronously
+    // when the response is available
+
+});
+
   function updateProfile(profileData) {
       console.log("profiledata", profileData);
     return (

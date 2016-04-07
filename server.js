@@ -10,7 +10,10 @@ var express       = require('express'),
     logger          = require('morgan'),
     routes          = require('./config/routes'),
     User            = require('./models/user'),
-    Beer = require('./models/beer');
+    Beer = require('./models/beer'),
+    cors = require('cors');
+
+app.use(cors());
 
 // require and load dotenv
 require('dotenv').load();
@@ -55,6 +58,8 @@ app.put('/api/me', auth.ensureAuthenticated, function (req, res) {
   });
 });
 
+
+
 app.delete('/api/me', function(req,res) {
     console.log("DELETE SERVER"); 
   User.findById(req.user, function(err, user) {
@@ -65,6 +70,16 @@ app.delete('/api/me', function(req,res) {
   });
 
 });
+
+// app.get('/api/me/beers', auth.ensureAuthenticated, function (req, res) {
+//   console.log('req.user', req.user);
+//   User.findById({_id: req.user}, function (err, user) {
+//     Beer.find({_id: {$in: user.beers}}, function(err, beers) {
+//       if (err) console.log(err);
+//       res.send(beers);
+//     });
+//   });
+// });
 
 /*
  * Auth Routes

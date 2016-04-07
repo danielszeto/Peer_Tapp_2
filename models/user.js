@@ -10,7 +10,8 @@ var userSchema = new Schema({
   displayName: String,
   username: { type: String },
   picture: String,
-  beerId: [{ type: Schema.Types.ObjectId, ref: 'Beer' }]
+  // beerid: [{ type: Schema.Types.ObjectId, ref: 'Beer' }]
+
 });
 
 userSchema.pre('save', function (next) {

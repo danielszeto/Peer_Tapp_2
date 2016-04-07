@@ -12,8 +12,8 @@ var express = require('express'),
 mongoose.connect('mongodb://localhost/peertapp');
 
 router.route('/api/users')
-	.get(usersController.index)
-	.post(usersController.create);
+  .get(usersController.index)
+  .post(usersController.create);
 
 //  beer crud api
 router.route('/api/beers')
@@ -22,7 +22,7 @@ router.route('/api/beers')
 
 router.route('/api/beers/:id')
   .get(auth.ensureAuthenticated, beersController.showBeer)
-  .put(auth.ensureAuthenticated, beersController.updateBeer)
+  .put(auth.ensureAuthenticated, beersController.editBeer)
   .delete(auth.ensureAuthenticated, beersController.deleteBeer);
 
 
