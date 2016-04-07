@@ -33,6 +33,7 @@ var beersController = {
   editBeer: function (req, res) {
     // get beer id from url params (`req.params`)
     var beerId = req.params.id;
+    console.log(req.params.id);
     console.log('hit editbeer route');
     // find beer in db by id
     Beer.findOne({ _id: beerId }, function (err, foundBeer) {
@@ -40,11 +41,18 @@ var beersController = {
         console.log(err);
         res.status(500).json({ error: err.message });
       } else {
-        res.json(foundBeer);
+        foundBeer.name = req.body.name;
+        foundBeer.kind = req.body.kind;
+        foundBeer.style = req.body.style;
+        foundBeer.upvotes = req.body.upvotes;
+        foundBeer.save(function (err, saved){
+            if (err) { console.log(err);}
+            res.json(saved);
+        });
       }
     });
   },
-  
+
   deleteBeer: function (req, res) {
     var id = req.params.id;
     Beer.remove({_id:id}, function (err, data) {
