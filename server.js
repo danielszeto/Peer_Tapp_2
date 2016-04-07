@@ -11,7 +11,8 @@ var express       = require('express'),
     routes          = require('./config/routes'),
     User            = require('./models/user'),
     Beer = require('./models/beer'),
-    cors = require('cors');
+    cors = require('cors'),
+    Event = require('./models/event');
 
 app.use(cors());
 

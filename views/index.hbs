@@ -23,6 +23,7 @@
   <script type="text/javascript" src="javascripts/app.js"></script>
 
   <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
@@ -52,14 +53,16 @@
          <li ng-show="!main.currentUser()"><a ui-sref="login">Log In</a></li>
          <li ng-show="main.currentUser()"><a ui-sref="logout">Log Out</a></li>
          <li ng-show="main.currentUser()"><a ui-sref="profile">Profile</a></li>
-         <li><a href="#myModal" ng-show="main.currentUser()" data-toggle="modal" data-target="#myModal">Add Beer</a></li>
+         <li ng-show="main.currentUser()"><a ui-sref="event">Events</a></li>
+         <li><a href="#addBeer" ng-show="main.currentUser()" data-toggle="modal" data-target="#addBeer">Add Beer</a></li>
+         <li><a href="#addEvent" ng-show="main.currentUser()" data-toggle="modal" data-target="#addEvent">Add Event</a></li>
        </ul>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="modal fade" id="myModal" ng-controller="AllController as all">
+<div class="modal fade" id="addBeer" ng-controller="AllController as all">
   <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -80,11 +83,44 @@
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Style</label>
-      <input class="form-control" ng-model="all.newBeer.style" id="new-Beer-style" placeholder="Password" type="password">
+      <input class="form-control" ng-model="all.newBeer.style" id="new-Beer-style" placeholder="Password">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Image</label>
-      <input class="form-control" ng-model="all.newBeer.image" id="new-Beer-image" placeholder="Image" type="password">
+      <input class="form-control" ng-model="all.newBeer.image" id="new-Beer-image" placeholder="Image">
+      </div>
+      <div>
+          <input type="submit" value="Add Beer">
+      </div>
+    </form>
+  </div>
+        <div class="modal-footer">
+          <a href="#" data-dismiss="modal" class="btn">Close</a>
+        </div>
+
+
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addEvent" ng-controller="EventController as event">
+  <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Add Event</h4>
+        </div>
+
+  <div class="modal-body">
+
+    <form class="add-beer" ng-submit='event.createEvent()'>
+        <div class="form-group">
+        <label for="exampleInputEmail1">Host</label>
+        <input class="form-control" ng-model="event.newEvent.host" id="new-Event-Host" placeholder="Your Name">
+        </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Location</label>
+      <input class="form-control" ng-model="event.newEvent.location" id="new-Event-Location" placeholder="Location">
       </div>
       <div>
           <input type="submit" value="Add Beer">

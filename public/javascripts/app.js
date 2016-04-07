@@ -9,6 +9,7 @@ var app = angular
   .controller('LogoutController', LogoutController)
   .controller('ProfileController', ProfileController)
   .controller('AllController', AllController)
+  .controller('EventController', EventController)
 
   .service('Account', Account)
   .config(configRoutes)
@@ -64,6 +65,15 @@ function configRoutes($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'templates/profile.html',
       controller: 'ProfileController',
       controllerAs: 'profile',
+      resolve: {
+        loginRequired: loginRequired
+      }
+    })
+    .state('event', {
+      url: '/event',
+      templateUrl: 'templates/event.html',
+      controller: 'EventController',
+      controllerAs: 'event',
       resolve: {
         loginRequired: loginRequired
       }
@@ -169,6 +179,72 @@ app.service('Beer', function($resource) {
 
 app.service('Comment', function($resource) {
   return $resource('http://localhost:3000/api/comments/:id', { id: '@_id' }, {
+    update: {
+      method: 'PUT' // this method issues a PUT request
+    }
+  });
+});
+
+function EventController (Event, $scope, $rootScope) {
+    var vm = this;
+    vm.newEvent = {};
+    vm.events = Event.query();
+    vm.createEvent = createEvent;
+    vm.updateEvent = updateEvent;
+    vm.deleteEvent = deleteEvent;
+    // vm.newComment ={};
+    // vm.comments = Comment.query();
+    // vm.createComment = createComment;
+
+    // vm.incrementUpvotes = incrementUpvotes;
+    // this.newComment ={};
+    // this.comments = Comment.query();
+    // this.createComment = createComment;
+  function updateEvent(event) {
+    console.log('updatingevent');
+      Event.update({id: event._id}, event);
+      vm.displayEditForm = false;
+    }
+
+  function incrementUpvotes(beer){
+      console.log('incrementing');
+      event.upvotes += 1;
+      Event.update({id: event._id}, event);
+      // console.log(beer.upvotes);
+    }
+
+
+  function createEvent(){
+    console.log('incrementing2');
+    console.log(vm.newEvent);
+        Event.save(vm.newEvent);
+        vm.events.push(vm.newEvent);
+        vm.newEvent = {};
+        console.log(vm.newBeer);
+        console.log('saved');
+   }
+  
+
+  function deleteEvent(event) {
+      console.log("deleting", beer._id);
+      Event.remove({id:event._id});
+      var eventsIndex = vm.events.indexOf(event);
+      vm.events.splice(eventsIndex, 1);
+    }
+
+  // function createComment(beer) {
+  //   console.log(beer._id);
+
+  //     this.newComment.beerId = beer._id;
+  //     Comment.save(this.newComment);
+  //     this.comments.push(this.newComment);
+  //     this.newComment = {};
+  //     console.log('saved comment');
+  //   }
+}
+
+app.service('Event', function($resource) {
+  return $resource('http://localhost:3000/api/events/:id', { id: '@_id' }, {
     update: {
       method: 'PUT' // this method issues a PUT request
     }

@@ -22,14 +22,43 @@
 
 
   <div class="container">
-    <div class="row" >
-    <div class="col-md-6" ng-repeat="beer in all.beers">
+  <h1> All Beers </h1>
+    <div class="row">
+    <div class="col-md-4" ng-repeat="beer in all.beers">
       <img class ="showBeer" src="{{beer.image}}"> <br/><br/>
-        <div>{{beer.name}} </div>
-        <div class="beerKind"> {{beer.kind}} </div>
-        <div class="beerStyle"> {{beer.style}} </div><br><br>
-        
+        <div>Beer Name: {{beer.name}}</div>
+        <div class="beerKind">Beer Kind: {{beer.kind}} </div>
+        <div class="beerStyle">Beer Style:{{beer.style}} </div><br><br>
+
+        <h5> Comments </h5>
+        <div class="main-comments">
          <ul ng-repeat="comment in all.comments | filter:{beerId: beer._id }">
+          <div class="shoeComments"> {{comment.body}} </div>
+        </ul>
+        </div>
+    
+        <form class="add-comment" ng-submit='all.createComment(beer)'>
+          <div>
+            <label for="comment-body"></label>
+            <input type="text" id="comment-body" ng-model="all.newComment.body" placeholder="comments">
+          </div>
+           <input type="submit" value="Add Comment">
+          </div>
+        </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+  <div class="event-main" ng-controller="EventController as event">
+  <h1> All Events </h1>
+    <div class="row">
+    <div class="col-md-4" ng-repeat="event in event.events">
+        <div>{{event.host}} </div>
+        <div class="beerKind"> {{event.location}} </div>
+       <!--  <div class="beerStyle"> {{beer.style}} </div><br><br> -->
+        
+         <!-- <ul ng-repeat="comment in all.comments | filter:{beerId: beer._id }">
           <div class="shoeComments"> {{comment.body}} </div>
         </ul>
 
@@ -40,13 +69,8 @@
           </div>
            <input type="submit" value="Add Comment">
           </div>
-        </form>
+        </form> -->
     </div>
-  <!--   <div class="col-sm-4">
-      One of three columns
-    </div>
-    <div class="col-sm-4">
-      One of three columns -->
     </div>
   </div>
 </div>

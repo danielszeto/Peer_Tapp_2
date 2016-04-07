@@ -6,8 +6,9 @@ var express = require('express'),
     router = express.Router(),
     auth            = require('../resources/auth'),
     usersController = require('../controllers/usersController'),
-    beersController = require('../controllers/beersController');
-    commentsController = require('../controllers/commentsController');
+    beersController = require('../controllers/beersController'),
+    commentsController = require('../controllers/commentsController'),
+    eventsController = require('../controllers/eventsController');
 
 // connect to mongodb
 mongoose.connect('mongodb://localhost/peertapp');
@@ -33,8 +34,21 @@ router.route('/api/comments')
 
 router.route('/api/commments/:id')
   .get(commentsController.showComment)
-  .put(commentsController.editComment)
+  .put(commentsController.editComment);
   // .delete(auth.ensureAuthenticated, beersController.deleteComment);
+
+
+  //  events crud api
+router.route('/api/events')
+  .get(eventsController.eventsIndex)
+  .post(auth.ensureAuthenticated, eventsController.newEvent);
+
+router.route('/api/events/:id')
+  .get(eventsController.showEvent)
+  .put(eventsController.editEvent);
+  // .delete(auth.ensureAuthenticated, beersController.deleteComment);
+
+
 
 
 module.exports = router;
