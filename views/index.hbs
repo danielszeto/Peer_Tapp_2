@@ -5,24 +5,28 @@
   <!-- angular -->
   <script src="/bower_components/angular/angular.js"></script> 
 
+
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="/bower_components/angular-resource/angular-resource.js"></script>
 
   <!-- Satellizer CDN -->
  <script src="http://cdn.jsdelivr.net/satellizer/0.14.0/satellizer.min.js"></script>
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css">
    <!-- local styles -->
 
   <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap-css-only/css/bootstrap.css">
 
-   <link rel="stylesheet" type="text/css" href="/css/style.css">
+  
 
   <!-- custom script (angular app) -->
   <script type="text/javascript" src="javascripts/app.js"></script>
 
   <!-- bootstrap -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
 
 </head>
 <body ng-controller="MainController as main">
@@ -48,11 +52,57 @@
          <li ng-show="!main.currentUser()"><a ui-sref="login">Log In</a></li>
          <li ng-show="main.currentUser()"><a ui-sref="logout">Log Out</a></li>
          <li ng-show="main.currentUser()"><a ui-sref="profile">Profile</a></li>
+         <li><a href="#myModal" ng-show="main.currentUser()" data-toggle="modal" data-target="#myModal">Add Beer</a></li>
        </ul>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<div class="modal fade" id="myModal" ng-controller="AllController as all">
+  <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Add Beer</h4>
+        </div>
+
+  <div class="modal-body">
+
+    <form class="add-beer" ng-submit='all.createBeer()'>
+        <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input class="form-control" ng-model="all.newBeer.name" id="new-Beer-Name" placeholder="Name">
+        </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Kind</label>
+      <input class="form-control" ng-model="all.newBeer.kind" id="new-Beer-Kind" placeholder="kind">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Style</label>
+      <input class="form-control" ng-model="all.newBeer.style" id="new-Beer-style" placeholder="Password" type="password">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Image</label>
+      <input class="form-control" ng-model="all.newBeer.image" id="new-Beer-image" placeholder="Image" type="password">
+      </div>
+      <div>
+          <input type="submit" value="Add Beer">
+      </div>
+    </form>
+  </div>
+        <div class="modal-footer">
+          <a href="#" data-dismiss="modal" class="btn">Close</a>
+        </div>
+
+
+      </div>
+    </div>
+</div>
+
+
+
+
 
     <div> <ui-view> </div>
 </body>

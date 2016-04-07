@@ -1,47 +1,52 @@
-<h1>All the Beers</h1>
+<!--  <div class="beerShow">
+    <ul ng-repeat="beer in all.beers">
+        <img class ="showBeer" src="{{beer.image}}"> <br/><br/>
+        <div>{{beer.name}} </div>
+        <div class="beerKind"> {{beer.kind}} </div>
+        <div class="beerStyle"> {{beer.style}} </div><br><br>
+        
+         <ul ng-repeat="comment in all.comments | filter:{beerId: beer._id }">
+          <div class="shoeComments"> {{comment.body}} </div>
+        </ul>
 
-     <form class="add-beer" ng-submit='all.createBeer()'>
-      <div>
-        <label for="beer-name">Name:</label>
-        <input type="text" id="beer-brand" ng-model="all.newBeer.name" placeholder="brand">
-      </div>
-      <div>
-        <label for="newShoe-kind">Kind:</label>
-        <input type="text" id="newBeer-kind" ng-model="all.newBeer.kind" placeholder="Ale?">
-      </div>
-      <div>
-        <label for="newShoe-style">Style:</label>
-        <input type="text" id="newBeer-style" ng-model="all.newBeer.style" placeholder="IPA?">
-      <div>
-      <div>
-        <label for="newShoe-image">Image:</label>
-        <input type="text" id="newBeer-image" ng-model="all.newBeer.image" placeholder="image URL">
-      <div>
-        <input type="submit" value="Add Beer">
-      </div>
-    </form>
-
-
-
-  <ul class="beerShow">
-       <ul ng-repeat="beer in all.beers">
-          <div>{{beer.name}} </div>
-          <div class="beerKind"> {{beer.kind}} </div>
-          <div class="beerKind"> {{beer.style}} </div>
-          <img class ="showBeer" src="{{beer.image}}"> <br/><br/>
-          <!-- <button class="btn btn-default" class='delete' ng-click="all.deleteBeer(beer)">Delete</button>
-          <button ng-click="all.displayEditForm=true" class="btn btn-default">Edit</button> -->
-
-        <!-- <form ng-show="all.displayEditForm" ng-submit="all.updateBeer(beer)">
-          <div class="form-group">
-              <input type="text" ng-model="beer.name" class="form-control" placeholder="Name">
+        <form class="add-comment" ng-submit='all.createComment(beer)'>
+          <div>
+            <label for="comment-body"></label>
+            <input type="text" id="comment-body" ng-model="all.newComment.body" placeholder="comments">
           </div>
-          <div class="form-group">
-              <input type="text" ng-model="beer.kind" class="form-control" placeholder="Kind">
+           <input type="submit" value="Add Comment">
           </div>
-          <div class="form-group">
-              <input type="text" ng-model="beer.style" class="form-control" placeholder="Style">
+        </form>
+    </ul>
+  </div> -->
+
+
+  <div class="container">
+    <div class="row" >
+    <div class="col-md-6" ng-repeat="beer in all.beers">
+      <img class ="showBeer" src="{{beer.image}}"> <br/><br/>
+        <div>{{beer.name}} </div>
+        <div class="beerKind"> {{beer.kind}} </div>
+        <div class="beerStyle"> {{beer.style}} </div><br><br>
+        
+         <ul ng-repeat="comment in all.comments | filter:{beerId: beer._id }">
+          <div class="shoeComments"> {{comment.body}} </div>
+        </ul>
+
+        <form class="add-comment" ng-submit='all.createComment(beer)'>
+          <div>
+            <label for="comment-body"></label>
+            <input type="text" id="comment-body" ng-model="all.newComment.body" placeholder="comments">
           </div>
-            <input type="submit" value="Save beer" class="btn btn-default">
-        </form> -->
-  </ul>
+           <input type="submit" value="Add Comment">
+          </div>
+        </form>
+    </div>
+  <!--   <div class="col-sm-4">
+      One of three columns
+    </div>
+    <div class="col-sm-4">
+      One of three columns -->
+    </div>
+  </div>
+</div>

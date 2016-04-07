@@ -3,7 +3,6 @@
 <p><strong>Email:</strong> {{main.currentUser().email}}</p>
 <p><strong>Username:</strong> {{main.currentUser().username}}</p>
 <p><strong>Joined:</strong> {{main.currentUser().created | date:'MMMM dd, yyyy'}}</p>
-<p><strong>Posts:</strong> {{main.currentUser().posts.length}}</p>
 
 <hr>
 <a href="#" ng-click="profile.showEditForm=true" ng-hide="profile.showEditForm" class="btn btn-default"><i class="fa fa-pencil"></i> Edit Profile</a>
@@ -33,10 +32,10 @@
 <div ng-controller="AllController as all">
   <ul class="beerShow">
        <ul ng-repeat="beer in all.beers | filter:{userid: currentUser }">
+       <img class="showBeer" src="{{beer.image}}"> <br/><br/>
           <div>{{beer.name}} </div>
           <div class="beerKind"> {{beer.kind}} </div>
           <div class="beerKind"> {{beer.style}} </div>
-          <img class="showBeer" src="{{beer.image}}"> <br/><br/>
           <button class="btn btn-default" class='delete' ng-click="all.deleteBeer(beer)">Delete</button>
           <button ng-click="all.displayEditForm=true" class="btn btn-default">Edit</button>
 

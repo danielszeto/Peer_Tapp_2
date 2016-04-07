@@ -1,3 +1,7 @@
+.navbar {
+    margin-bottom: 0;
+}
+
 .showBeer {
     width: 20%;
     height: auto;
@@ -13,3 +17,34 @@
   min-width: 100%;
   min-height: 100%;
 }
+
+.hero-img-appName {
+    position: absolute;
+    transform: translate(-50%);
+    left: 50%;
+    color: white;
+    font-size: 100px;
+    top: 25%;
+}
+
+.hero-div {
+  background-image: url(http://41.media.tumblr.com/f416c213338b3398fa962810c7c55d31/tumblr_msixmnjGFD1qz82s5o1_1280.jpg);
+  background-size: cover;
+  height: 900px;
+
+
+}
+
+.about-div {
+
+
+}
+
+.modal-backdrop {
+  z-index: -1;
+}
+
+/*.main-div {
+  background-image: url(https://images.unsplash.com/reserve/6TjIJK0uSJWtQUZuQWMW_58400023.jpg?crop=entropy&fit=crop&fm=jpg&h=1200&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1150);
+  background-size: cover;
+}*/

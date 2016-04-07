@@ -101,13 +101,16 @@ function configRoutes($stateProvider, $urlRouterProvider, $locationProvider) {
 // CONTROLLERS //
 /////////////////
 // AllController.$inject = ["Account"]; // minification protection
-function AllController (Beer, $scope, $rootScope) {
+function AllController (Beer, Comment, $scope, $rootScope) {
     var vm = this;
     vm.newBeer = {};
     vm.beers = Beer.query();
     vm.createBeer = createBeer;
     vm.updateBeer = updateBeer;
     vm.deleteBeer = deleteBeer;
+    vm.newComment ={};
+    vm.comments = Comment.query();
+    vm.createComment = createComment;
 
     // vm.incrementUpvotes = incrementUpvotes;
     // this.newComment ={};
@@ -126,6 +129,7 @@ function AllController (Beer, $scope, $rootScope) {
       // console.log(beer.upvotes);
     }
 
+
   function createBeer(){
     console.log('incrementing2');
     console.log(vm.newBeer);
@@ -135,6 +139,7 @@ function AllController (Beer, $scope, $rootScope) {
         console.log(vm.newBeer);
         console.log('saved');
    }
+  
 
   function deleteBeer(beer) {
       console.log("deleting", beer._id);
@@ -142,10 +147,28 @@ function AllController (Beer, $scope, $rootScope) {
       var beersIndex = vm.beers.indexOf(beer);
       vm.beers.splice(beersIndex, 1);
     }
+
+  function createComment(beer) {
+    console.log(beer._id);
+
+      this.newComment.beerId = beer._id;
+      Comment.save(this.newComment);
+      this.comments.push(this.newComment);
+      this.newComment = {};
+      console.log('saved comment');
+    }
 }
 
 app.service('Beer', function($resource) {
   return $resource('http://localhost:3000/api/beers/:id', { id: '@_id' }, {
+    update: {
+      method: 'PUT' // this method issues a PUT request
+    }
+  });
+});
+
+app.service('Comment', function($resource) {
+  return $resource('http://localhost:3000/api/comments/:id', { id: '@_id' }, {
     update: {
       method: 'PUT' // this method issues a PUT request
     }
