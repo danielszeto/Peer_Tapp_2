@@ -11,7 +11,7 @@ var express = require('express'),
     eventsController = require('../controllers/eventsController');
 
 // connect to mongodb
-mongoose.connect('mongodb://localhost/peertapp');
+mongoose.connect( process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/peertapp');
 
 router.route('/api/users')
   .get(usersController.index)

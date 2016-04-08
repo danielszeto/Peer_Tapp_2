@@ -19,7 +19,6 @@ app.use(cors());
 // require and load dotenv
 require('dotenv').load();
 
-mongoose.connect( process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/peertapp');
 
 //MIDDLEWARE
 app.use(bodyParser.json());
