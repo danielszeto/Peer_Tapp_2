@@ -13,11 +13,15 @@ var express       = require('express'),
     Beer = require('./models/beer'),
     cors = require('cors'),
     Event = require('./models/event');
+    
 
 app.use(cors());
 
 // require and load dotenv
 require('dotenv').load();
+
+// connect to mongodb
+mongoose.connect( process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/peertapp');
 
 
 //MIDDLEWARE

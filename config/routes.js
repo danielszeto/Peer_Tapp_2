@@ -10,8 +10,6 @@ var express = require('express'),
     commentsController = require('../controllers/commentsController'),
     eventsController = require('../controllers/eventsController');
 
-// connect to mongodb
-mongoose.connect( process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/peertapp');
 
 router.route('/api/users')
   .get(usersController.index)
