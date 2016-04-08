@@ -1,3 +1,8 @@
+body {
+  background-image: url("https://images.unsplash.com/photo-1452562961439-283b44358d48?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=00ed87bd5b5fef31b8dd92252fd99329");
+  background-size: cover;
+}
+
 .navbar {
     margin-bottom: 0;
 }
@@ -199,8 +204,9 @@ background-color: #030033;
   width: 100%;
 }
 
-
-
+.profile-info {
+  padding: 2%;
+}
 
 
 
