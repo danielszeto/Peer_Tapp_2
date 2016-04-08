@@ -3,8 +3,10 @@
 }
 
 .showBeer {
-    width: 20%;
-    height: auto;
+    height: 100px;
+    width: 25%;
+    margin: auto;
+    display: block; 
 }
 
 .bg {
@@ -37,24 +39,10 @@
 
 .about-div {
   padding: 5%;
-
-
 }
 
 .modal-backdrop {
   z-index: -1;
-}
-
-.row {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-  flex-wrap: wrap;
-}
-.row > [class*='col-'] {
-  display: flex;
-  flex-direction: column;
 }
 
 /*.main-div {
@@ -152,6 +140,86 @@
 
 .main-comments {
   height: 50px;
-  width: 35%; 
+  width: 80%;
+  margin: auto; 
   overflow:scroll;
 }
+
+
+/* --- Nav bar Style --- */
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+color: #000;  /*Sets the text hover color on navbar*/
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   
+ a:hover, .navbar-default .navbar-nav > .active > a:focus {
+color: white; /*BACKGROUND color for active*/
+background-color: #030033;
+}
+
+  .navbar-default {
+    background-color: #0f006f;
+    border-color: #030033;
+}
+
+.navbar-default .navbar-brand {
+  color:white;
+}
+
+  .dropdown-menu > li > a:hover,
+   .dropdown-menu > li > a:focus {
+    color: #262626;
+   text-decoration: none;
+  background-color: #66CCFF;  /*change color of links in drop down here*/
+   }
+
+ .nav > li > a:hover,
+ .nav > li > a:focus {
+    text-decoration: none;
+    background-color: silver; /*Change rollover cell color here*/
+  }
+
+
+  .navbar-default .navbar-nav > li > a {
+   color: white; /*Change active text color here*/
+    }
+
+.events-box {
+  overflow: scroll;
+  margin: 0;
+  height: 200px;
+}
+
+.individual-beer {
+  height: 400px;
+  background-color: grey;
+}
+
+.beer-img-div {
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

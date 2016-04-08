@@ -1,41 +1,17 @@
 <h1>All Events</h1>
-
-<div class="add-event">
-<form class="add-event" ng-submit='event.createEvent()'>
-        <div class="form-group">
-        <label for="exampleInputEmail1">Host</label>
-        <input class="form-control" ng-model="event.newEvent.host" id="new-Beer-Host" placeholder="Your Name">
+    <div ng-controller="EventController as ev" class="container-fluid events-box">
+      <div class="row">
+        <div ng-repeat="event in ev.events" class="col-md-3">
+            <div class="panel panel-default">
+                <!-- Panel Title -->
+                <div class="panel-heading">
+                    <h2 class="panel-title text-center"> {{event.location}} <span class="glyphicon glyphicon-map-marker"></span></h2>
+                </div>
+                <!-- Panel Body -->
+                <div class="panel-body">
+                    Host: {{event.host}}
+                </div>
+            </div>
+          </div>
         </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Location</label>
-      <input class="form-control" ng-model="event.newEvent.location" id="new-Beer-Location" placeholder="kind">
       </div>
-      <div>
-          <input type="submit" value="Add Event">
-      </div>
-    </form>
-</div>
-
-<div class="container" >
-    <div class="row" >
-    <div class="col-md-4" ng-repeat="event in event.events">
-        <div>{{event.host}} </div>
-        <div class="beerKind"> {{event.location}} </div>
-        <!-- <div class="beerStyle"> {{beer.style}} </div><br><br> -->
-        
-<!--          <ul ng-repeat="comment in all.comments | filter:{beerId: beer._id }">
-          <div class="shoeComments"> {{comment.body}} </div>
-        </ul> -->
-
-<!--         <form class="add-comment" ng-submit='all.createComment(beer)'>
-          <div>
-            <label for="comment-body"></label>
-            <input type="text" id="comment-body" ng-model="all.newComment.body" placeholder="comments">
-          </div>
-           <input type="submit" value="Add Comment">
-          </div>
-        </form> -->
-    </div>
-    </div>
-  </div>
-</div>

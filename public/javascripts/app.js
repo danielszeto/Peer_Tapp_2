@@ -112,6 +112,9 @@ function configRoutes($stateProvider, $urlRouterProvider, $locationProvider) {
 /////////////////
 // AllController.$inject = ["Account"]; // minification protection
 function AllController (Beer, Comment, $scope, $rootScope) {
+
+  var widget = uploadcare.initialize('#beer-image');
+
     var vm = this;
     vm.newBeer = {};
     vm.beers = Beer.query();
@@ -142,6 +145,9 @@ function AllController (Beer, Comment, $scope, $rootScope) {
 
   function createBeer(){
     console.log('incrementing2');
+    var beerImg = $('#beer-image').val();
+
+    vm.newBeer.image = beerImg;
     console.log(vm.newBeer);
         Beer.save(vm.newBeer);
         vm.beers.push(vm.newBeer);
@@ -206,7 +212,7 @@ function EventController (Event, $scope, $rootScope) {
       vm.displayEditForm = false;
     }
 
-  function incrementUpvotes(beer){
+  function incrementUpvotes(event){
       console.log('incrementing');
       event.upvotes += 1;
       Event.update({id: event._id}, event);

@@ -1,53 +1,72 @@
+         <h1> Profile <h1>
+            <div class="row" class="col-md-3">
+              <h3>{{main.currentUser().displayName}}</h3>
+              <h6>Username:{{main.currentUser().username}}</h6>
+              <h6>Email:{{main.currentUser().email}}</h6>
+              <h6>Joined:{{main.currentUser().created | date:'MMMM dd, yyyy'}}</h6>
+            </div>
+         
+      
 
-      <div class="col-md-2">
+
+
+<!--       <div class="col-xs-2">
+      <h1> Profile </h1>
         <h3>{{main.currentUser().displayName}}</h3>
         <p><strong>Username:</strong> {{main.currentUser().username}}</p>
         <p><strong>Email:</strong> {{main.currentUser().email}}</p>
         <p><strong>Joined:</strong> {{main.currentUser().created | date:'MMMM dd, yyyy'}}</p>
-      </div>
+      </div> -->
 
-        <h1>My Beers </h1>
-          <div ng-controller="AllController as all">
-             <div class="col-md-4" ng-repeat="beer in all.beers | filter:{userid: currentUser }">
-                <img class="showBeer" src="{{beer.image}}"> <br/><br/>
-                <div>{{beer.name}} </div>
-                <div class="beerKind"> {{beer.kind}} </div>
-                <div class="beerKind"> {{beer.style}} </div>
-                <button class="btn btn-default" class='delete' ng-click="all.deleteBeer(beer)">Delete</button>
-                <button ng-click="all.displayEditForm=true" class="btn btn-default">Edit</button>
-
-                <form ng-show="all.displayEditForm" ng-submit="all.updateBeer(beer)">
-                  <div class="form-group">
-                      <input type="text" ng-model="beer.name" class="form-control" placeholder="Name">
-                  </div>
-                  <div class="form-group">
-                      <input type="text" ng-model="beer.kind" class="form-control" placeholder="Kind">
-                  </div>
-                  <div class="form-group">
-                      <input type="text" ng-model="beer.style" class="form-control" placeholder="Style">
-                  </div>
-                    <input type="submit" value="Save beer" class="btn btn-default">
-                </form>
+          <h1>Events</h1>
+          <div ng-controller="EventController as ev" class="container-fluid events-box">
+          <div class="row">
+              <div ng-repeat="event in ev.events | filter:{eventuserid: currentUser }" class="col-md-3">
+              <div class="panel panel-default">
+                <!-- Panel Title -->
+                <div class="panel-heading">
+                    <h2 class="panel-title text-center"> {{event.location}} <span class="glyphicon glyphicon-map-marker"></span></h2>
+                </div>
+                <!-- Panel Body -->
+                <div class="panel-body">
+                    Host: {{event.host}}
+                </div>
             </div>
-
-
-         <h1>My Events</h1>
-          <div ng-controller="EventController as event">
-            <div class="col-md-4" ng-repeat="event in event.events | filter:{eventuserid: currentUser }">
-                <div>{{event.host}} </div>
-                <div> {{event.location}} </div>
-                <button class="btn btn-default" class='delete' ng-click="event.deleteEvent(event)">Delete</button>
-                <button ng-click="event.displayEditForm=true" class="btn btn-default">Edit</button>
-
-                <form ng-show="event.displayEditForm" ng-submit="event.updateEvent(event)">
-                  <div class="form-group">
-                      <input type="text" ng-model="event.host" class="form-control" placeholder="Host">
-                  </div>
-                  <div class="form-group">
-                      <input type="text" ng-model="event.location" class="form-control" placeholder="Location">
-                  </div>
-                     <input type="submit" value="Save Event" class="btn btn-default">
-               </form>
+              </div>
             </div>
           </div>
+
+            <h1>Beers </h1>
+<div ng-controller="AllController as all" class="container-fluid">
+              <div class="row">
+             <div ng-repeat="beer in all.beers | filter:{userid: currentUser }">
+                <div class="col-md-4 individual-beer">
+                  <div class="beer-img-div"> 
+                   <img class="showBeer" src="{{beer.image}}"> <br/><br/>
+                  </div>
+                  <div>{{beer.name}} </div>
+                  <div class="beerKind"> {{beer.kind}} </div>
+                  <div class="beerKind"> {{beer.style}} </div>
+                          <h5> Comments </h5>
+                    <div class="main-comments">
+                     <ul ng-repeat="comment in all.comments | filter:{beerId: beer._id }">
+                      <div class="shoeComments"> {{comment.body}} </div>
+                    </ul>
+                    </div>
+                
+                    <form class="add-comment" ng-submit='all.createComment(beer)'>
+                      <div>
+                        <label for="comment-body"></label>
+                        <input type="text" id="comment-body" ng-model="all.newComment.body" placeholder="comments">
+                      </div>
+                      <div>
+                       <input type="submit" value="Add Comment">
+                      </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
 

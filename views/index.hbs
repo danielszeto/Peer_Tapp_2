@@ -29,6 +29,14 @@
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 
+<script>
+  UPLOADCARE_LOCALE = "en";
+  UPLOADCARE_TABS = "file url instagram";
+  UPLOADCARE_PUBLIC_KEY = "ae61bab15249dce8d636";
+  UPLOADCARE_LIVE = "false";
+</script>
+<script charset="utf-8" src="//ucarecdn.com/widget/2.8.2/uploadcare/uploadcare.full.min.js"></script>
+
 </head>
 <body ng-controller="MainController as main">
 
@@ -51,11 +59,11 @@
        <ul class="nav navbar-nav navbar-right">
          <li ng-show="!main.currentUser()"><a ui-sref="signup">Sign Up</a></li>
          <li ng-show="!main.currentUser()"><a ui-sref="login">Log In</a></li>
-         <li ng-show="main.currentUser()"><a ui-sref="logout">Log Out</a></li>
          <li ng-show="main.currentUser()"><a ui-sref="profile">Profile</a></li>
          <li ng-show="main.currentUser()"><a ui-sref="event">Events</a></li>
          <li><a href="#addBeer" ng-show="main.currentUser()" data-toggle="modal" data-target="#addBeer">Add Beer</a></li>
          <li><a href="#addEvent" ng-show="main.currentUser()" data-toggle="modal" data-target="#addEvent">Add Event</a></li>
+          <li ng-show="main.currentUser()"><a ui-sref="logout">Log Out</a></li>
        </ul>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -79,15 +87,16 @@
         </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Kind</label>
-      <input class="form-control" ng-model="all.newBeer.kind" id="new-Beer-Kind" placeholder="kind">
+      <input class="form-control" ng-model="all.newBeer.kind" id="new-Beer-Kind" placeholder="Kind">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Style</label>
-      <input class="form-control" ng-model="all.newBeer.style" id="new-Beer-style" placeholder="Password">
+      <input class="form-control" ng-model="all.newBeer.style" id="new-Beer-style" placeholder="Style">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Image</label>
-      <input class="form-control" ng-model="all.newBeer.image" id="new-Beer-image" placeholder="Image">
+      <input id="beer-image" type="hidden" role="uploadcare-uploader"
+       data-crop="disabled" />
       </div>
       <div>
           <input type="submit" value="Add Beer">
