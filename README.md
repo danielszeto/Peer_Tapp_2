@@ -1,4 +1,4 @@
-# Peer Tapp README
+# Peer Tapp
 
 # Description
 
