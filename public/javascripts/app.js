@@ -176,7 +176,7 @@ function AllController (Beer, Comment, $scope, $rootScope) {
 }
 
 app.service('Beer', function($resource) {
-  return $resource('http://peertapp.herokuapp.com/api/beers/:id', { id: '@_id' }, {
+  return $resource('https://peertapp.herokuapp.com/api/beers/:id', { id: '@_id' }, {
     update: {
       method: 'PUT' // this method issues a PUT request
     }
@@ -184,7 +184,7 @@ app.service('Beer', function($resource) {
 });
 
 app.service('Comment', function($resource) {
-  return $resource('http://peertapp.herokuapp.com/api/comments/:id', { id: '@_id' }, {
+  return $resource('https://peertapp.herokuapp.com/api/comments/:id', { id: '@_id' }, {
     update: {
       method: 'PUT' // this method issues a PUT request
     }
@@ -250,7 +250,7 @@ function EventController (Event, $scope, $rootScope) {
 }
 
 app.service('Event', function($resource) {
-  return $resource('http://peertapp.herokuapp.com/api/events/:id', { id: '@_id' }, {
+  return $resource('https://peertapp.herokuapp.com/api/events/:id', { id: '@_id' }, {
     update: {
       method: 'PUT' // this method issues a PUT request
     }
