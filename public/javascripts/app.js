@@ -176,7 +176,7 @@ function AllController (Beer, Comment, $scope, $rootScope) {
 }
 
 app.service('Beer', function($resource) {
-  return $resource('http://localhost:3000/api/beers/:id', { id: '@_id' }, {
+  return $resource('http://peertapp.herokuapp.com/api/beers/:id', { id: '@_id' }, {
     update: {
       method: 'PUT' // this method issues a PUT request
     }
@@ -184,7 +184,7 @@ app.service('Beer', function($resource) {
 });
 
 app.service('Comment', function($resource) {
-  return $resource('http://localhost:3000/api/comments/:id', { id: '@_id' }, {
+  return $resource('http://peertapp.herokuapp.com/api/comments/:id', { id: '@_id' }, {
     update: {
       method: 'PUT' // this method issues a PUT request
     }
