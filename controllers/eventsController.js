@@ -19,10 +19,11 @@ var eventsController = {
     console.log('new event route is hittin');
     var location = req.body.location;
     var host = req.body.host;
+    var date = req.body.date;
     var location = req.body.location;
     var eventuserid = req.user;
 
-    Event.create({location: location, host: host, eventuserid: eventuserid}, 
+    Event.create({location: location, host: host, date: date, eventuserid: eventuserid}, 
     function(err, newEvent) { 
       console.log(newEvent);
       err ? console.log(err) : res.json(newEvent);
@@ -42,6 +43,7 @@ var eventsController = {
       } else {
         foundEvent.location  = req.body.location;
         foundEvent.host = req.body.host;
+        foundEvent.date = req.body.host;
         foundEvent.upvotes = req.body.upvotes;
         foundEvent.save(function (err, saved){
             if (err) { console.log(err);}

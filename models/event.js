@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var EventSchema = new mongoose.Schema({
   location: {type: String, required: true},
   host: {type: String, required: true},
+  date: {type: Date, required: true},
   eventuserid: {type: String, required: true},
   upvotes: {type: Number, default: 0},
   createdAt: { type : Date, default: Date.now() }

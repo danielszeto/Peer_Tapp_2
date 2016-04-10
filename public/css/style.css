@@ -1,10 +1,16 @@
-/*body {
-  background-image: url("https://images.unsplash.com/photo-1452562961439-283b44358d48?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=00ed87bd5b5fef31b8dd92252fd99329");
-  background-size: cover;
-}*/
+body {
+  font-family: 'Cambay', sans-serif;
+  background-color: #F2F4F3;
+}
 
 .login-form {
-  width: 10px;
+  width: 450px;
+  margin: auto;
+}
+
+.signup-form {
+  width: 450px;
+  margin: auto;
 }
 
 .navbar {
@@ -38,10 +44,19 @@
     top: 25%;
 }
 
+.hero-img-line {
+    position: absolute;
+    transform: translate(-50%);
+    left: 49%;
+    color: white;
+    font-size: 50px;
+    top: 39%;
+}
+
 .hero-div {
-  background-image: url(http://41.media.tumblr.com/f416c213338b3398fa962810c7c55d31/tumblr_msixmnjGFD1qz82s5o1_1280.jpg);
+  background-image: url(https://images.unsplash.com/photo-1436076863939-06870fe779c2?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=c849a35685561e1b1b5ce06cfee4df20);
   background-size: cover;
-  height: 800px;
+  height: 750px;
 
 
 }
@@ -154,54 +169,20 @@
   overflow:scroll;
 }
 
-
-/* --- Nav bar Style --- */
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-color: #000;  /*Sets the text hover color on navbar*/
+.main-comments-header {
+  text-align: center;
+  font-size: 16px;
+  font-style: bold;
 }
-
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   
- a:hover, .navbar-default .navbar-nav > .active > a:focus {
-color: white; /*BACKGROUND color for active*/
-background-color: #030033;
-}
-
-  .navbar-default {
-    background-color: #0f006f;
-    border-color: #030033;
-}
-
-.navbar-default .navbar-brand {
-  color:white;
-}
-
-  .dropdown-menu > li > a:hover,
-   .dropdown-menu > li > a:focus {
-    color: #314570;
-   text-decoration: none;
-  background-color: #314570;  /*change color of links in drop down here*/
-   }
-
- .nav > li > a:hover,
- .nav > li > a:focus {
-    text-decoration: none;
-    background-color: white; /*Change rollover cell color here*/
-  }
-
-
-  .navbar-default .navbar-nav > li > a {
-   color: white; /*Change active text color here*/
-    }
 
 .events-box {
   overflow: scroll;
   margin: 0;
-  height: 200px;
+  height: 400px;
 }
 
 .individual-beer {
-  height: 400px;
-/*  background-color: grey;*/
+  height: 300px;
 }
 
 .beer-img-div {
@@ -210,10 +191,71 @@ background-color: #030033;
 
 .profile-info {
   padding: 2%;
+  width: 200px;
 }
 
+.profile-text {
+  font-size: 16px;
+}
 
+.beer-show {
+  font-size: 16px;
+}
 
+.beer-tiles {
+  background-color: #BFC0C0;
+  border-style: solid;
+}
+
+/* navbar */
+.navbar-default {
+    background-color: #000000;
+    border-color: #000000;
+}
+/* title */
+.navbar-default .navbar-brand {
+    color: #F2F4F3;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #FFFFFF;
+}
+/* link */
+.navbar-default .navbar-nav > li > a {
+    color: #FFFFFF;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #FFFFFF;
+}
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #555;
+    background-color: #E7E7E7;
+}
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #D5D5D5;
+}
+/* caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #777;
+    border-bottom-color: #777;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #333;
+    border-bottom-color: #333;
+}
+.navbar-default .navbar-nav > .open > a .caret, 
+.navbar-default .navbar-nav > .open > a:hover .caret, 
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #555;
+    border-bottom-color: #555;
+}
 
 
 

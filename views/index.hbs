@@ -23,6 +23,7 @@
   <script type="text/javascript" src="javascripts/app.js"></script>
 
   <!-- bootstrap -->
+  <link href='https://fonts.googleapis.com/css?family=Cambay:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -123,12 +124,16 @@
 
     <form class="add-beer" ng-submit='event.createEvent()'>
         <div class="form-group">
-        <label for="exampleInputEmail1">Host</label>
+        <label for="">Host</label>
         <input class="form-control" ng-model="event.newEvent.host" id="new-Event-Host" placeholder="Your Name">
         </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Location</label>
+        <label for="">Location</label>
       <input class="form-control" ng-model="event.newEvent.location" id="new-Event-Location" placeholder="Location">
+      </div>
+      <div class="form-group">
+        <label for="">Date</label>
+      <input type="date" class="form-control" ng-model="event.newEvent.date" id="new-Event-Date" placeholder="Date">
       </div>
       <div>
           <input type="submit" value="Add Event">
