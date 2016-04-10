@@ -250,7 +250,7 @@ function EventController (Event, $scope, $rootScope) {
 }
 
 app.service('Event', function($resource) {
-  return $resource('http://localhost:3000/api/events/:id', { id: '@_id' }, {
+  return $resource('http://peertapp.herokuapp.com/api/events/:id', { id: '@_id' }, {
     update: {
       method: 'PUT' // this method issues a PUT request
     }
